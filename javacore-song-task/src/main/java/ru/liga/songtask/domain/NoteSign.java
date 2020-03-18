@@ -137,7 +137,9 @@ public enum NoteSign {
                         Double.valueOf(Math.abs(n1.frequency_hz - pitchInHz))
                                 .compareTo(Math.abs(n2.frequency_hz - pitchInHz)))
                 .get();
+
     }
+
 
     public static NoteSign fromMidiNumber(Integer midiNumber) {
         return Stream.of(values())

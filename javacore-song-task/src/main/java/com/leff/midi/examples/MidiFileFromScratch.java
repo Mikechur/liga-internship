@@ -23,7 +23,6 @@ public class MidiFileFromScratch
         // 2a. Track 0 is typically the tempo map
         TimeSignature ts = new TimeSignature();
         ts.setTimeSignature(4, 4, TimeSignature.DEFAULT_METER, TimeSignature.DEFAULT_DIVISION);
-
         Tempo t = new Tempo();
         t.setBpm(228);
 
