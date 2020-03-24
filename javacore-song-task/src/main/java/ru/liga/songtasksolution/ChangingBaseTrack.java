@@ -18,6 +18,7 @@ public class ChangingBaseTrack {
     private final static Logger logger = LoggerFactory.getLogger(ChangingBaseTrack.class);
 
     public static List<MidiTrack> transposAllTrack(List<MidiTrack> midiTracks, int transposValue) {
+        logger.debug("Метод транспонирования трека начал свою работу ...");
         for (int i = 0; i < midiTracks.size(); i++) {
             MidiTrack midiTrack = midiTracks.get(i);
             for (MidiEvent midiEvent : midiTrack.getEvents()) {
@@ -33,6 +34,7 @@ public class ChangingBaseTrack {
     }
 
     public static float changeTrackSpeed(MidiFile midiFile, int percent) {
+        logger.debug("Метод изменения скорости трека начал свою работу...");
         float inhancePersent = 1 + (percent / 100f);
         Tempo tempo = (Tempo) midiFile.getTracks().get(0).getEvents().last();
         tempo.setBpm(tempo.getBpm() * inhancePersent);
@@ -41,6 +43,7 @@ public class ChangingBaseTrack {
     }
 
     public static void saveToFile(MidiFile midiFile, String addingToFileName, String oldMidiFilePath) {
+        logger.debug("Метод сохранения трека в новый файл начал свою работу...");
         File file = new File(oldMidiFilePath);
         String name = file.getName().replaceAll("\\.mid", "");
         String parent = file.getParent();

@@ -9,10 +9,7 @@ import ru.liga.songtasksolution.AnalyzeVoiceTrack;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -77,20 +74,20 @@ public class AnalyzeVoiceTrackTest {
 
     @Test
     public void checkNoteRepeatCount() {
-        HashMap<String, Integer> noteEntering = AnalyzeVoiceTrack.getNoteRepeat(notes);
+        Map<String, Integer> noteEntering = AnalyzeVoiceTrack.noteRepeat(notes);
         assertThat(noteEntering.get("A3")).isEqualTo(150);
     }
 
     @Test
     public void checkNoteRepeatCou2t() {
-        HashMap<String, Integer> noteEntering = AnalyzeVoiceTrack.getNoteRepeat(notes);
+        Map<String, Integer> noteEntering = AnalyzeVoiceTrack.noteRepeat(notes);
         assertThat(noteEntering.get("A3")).isEqualTo(110);
     }
 
 
     @Test
     public void checkNoteDurationRepeatCount() {
-        HashMap<Integer, Integer> noteDurationEntering = AnalyzeVoiceTrack.getDurationRepeat(notes, tempo.getBpm(), midiFile.getResolution());
+        Map<Integer, Integer> noteDurationEntering = AnalyzeVoiceTrack.noteDurationRepeat(notes, tempo.getBpm(), midiFile.getResolution());
         assertThat(noteDurationEntering.get(2875)).isEqualTo(4);
     }
 }

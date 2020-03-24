@@ -45,12 +45,9 @@ public class App {
             List<Note> notes = eventsToNotes(trackWithWords.getEvents());
             Tempo last = (Tempo) midiFile.getTracks().get(0).getEvents().last();
 
-            logger.info("Нахождение диапазона нот...");
             AnalyzeVoiceTrack.noteDiapason(notes);
-            logger.info("Нахождение повторений длительностей нот...");
-            AnalyzeVoiceTrack.getDurationRepeat(notes, last.getBpm(), midiFile.getResolution());
-            logger.info("Нахождение повторений нот...");
-            AnalyzeVoiceTrack.getNoteRepeat(notes);
+            AnalyzeVoiceTrack.noteDurationRepeat(notes, last.getBpm(), midiFile.getResolution());
+            AnalyzeVoiceTrack.noteRepeat(notes);
         }
 
         if (args.length == 6 && args[1].equals("change")) {
@@ -58,11 +55,8 @@ public class App {
             logger.info("Величина транспонирования: " + args[3]);
             logger.info("Изменение темпа трека: " + args[5] + " процентов");
 
-            logger.info("Транспонирование трека...");
             ChangingBaseTrack.transposAllTrack(midiFile.getTracks(), Integer.parseInt(args[3]));
-            logger.info("Изменение темпа трека...");
             ChangingBaseTrack.changeTrackSpeed(midiFile, Integer.parseInt(args[5]));
-            logger.info("Сохранение в новый файл...");
             MidiFile newMidiFile = new MidiFile(midiFile.getResolution(), midiFile.getTracks());
             String addingToFileName = args[2] + args[3] + args[4] + args[5];
             ChangingBaseTrack.saveToFile(newMidiFile, addingToFileName, args[0]);

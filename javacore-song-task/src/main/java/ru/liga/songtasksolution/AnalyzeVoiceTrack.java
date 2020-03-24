@@ -17,6 +17,7 @@ public class AnalyzeVoiceTrack {
     private final static Logger logger = LoggerFactory.getLogger(AnalyzeVoiceTrack.class);
 
     public static MidiTrack trackWithTextWords(List<MidiTrack> midiTracks) {
+        logger.debug("Метод поиска трека с текстовымми словами начал работу...");
 
      // Ищем трек с названием Words, в котором слова лежат
 
@@ -37,6 +38,7 @@ public class AnalyzeVoiceTrack {
     }
 
     public static MidiTrack trackWithWords(List<MidiTrack> midiTracks, MidiTrack trackWithTextWords) {
+        logger.debug("Метод поиска трека с голосом начал работу...");
 
         // Ищем трек с голосом - сначала по Lyrics(в 2 из 3 треков быстро найдёт по ним)
         List<MidiTrack> midiTrackWithLyrics = midiTracks.stream()
@@ -76,6 +78,7 @@ public class AnalyzeVoiceTrack {
     }
 
     public static int noteDiapason(List<Note> notes) {
+        logger.debug("Метод поиска диапазона нот начал работу...");
         notes.sort(Comparator.comparing(note -> note.sign().getFrequencyHz()));
         String print = String.format("\nДиапазон\n" +
                         "\t  верхняя: %s\n" +
@@ -89,8 +92,9 @@ public class AnalyzeVoiceTrack {
         return notes.get(notes.size() - 1).sign().getMidi() - notes.get(0).sign().getMidi();
     }
 
-    public static HashMap<Integer, Integer> getDurationRepeat(List<Note> notes, float bpm, int resolution) {
-        HashMap<Integer, Integer> durationEntering = new HashMap<>();
+    public static Map<Integer, Integer> noteDurationRepeat(List<Note> notes, float bpm, int resolution) {
+        logger.debug("Метод поиска количества повторений нот по длительности начал работу...");
+        Map<Integer, Integer> durationEntering = new HashMap<>();
         for (Note note : notes) {
             int tickToMs = SongUtils.tickToMs(bpm, resolution, note.durationTicks());
             if (durationEntering.containsKey(tickToMs)) {
@@ -107,8 +111,9 @@ public class AnalyzeVoiceTrack {
         return durationEntering;
     }
 
-    public static HashMap<String, Integer> getNoteRepeat(List<Note> notes) {
-        HashMap<String, Integer> noteEntering = new HashMap<>();
+    public static Map<String, Integer> noteRepeat(List<Note> notes) {
+        logger.debug("Метод поиска количества повторений нот начал работу...");
+        Map<String, Integer> noteEntering = new HashMap<>();
         for (Note note : notes) {
             String noteName = note.sign().fullName();
             if (noteEntering.containsKey(noteName)) {

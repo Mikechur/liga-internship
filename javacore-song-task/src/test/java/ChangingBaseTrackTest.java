@@ -10,7 +10,7 @@ import ru.liga.songtasksolution.ChangingBaseTrack;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
-import java.util.TreeSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -46,7 +46,7 @@ public class ChangingBaseTrackTest {
 
     @Test
     public void checkTransposAllTrack() {
-        TreeSet<MidiEvent> oldMidiEvents = tracks.get(6).getEvents();
+        Set<MidiEvent> oldMidiEvents = tracks.get(6).getEvents();
         int transposValue = 2;
 
         // Сравнение значений у Нот типа NoteOn до транспонирования и после
