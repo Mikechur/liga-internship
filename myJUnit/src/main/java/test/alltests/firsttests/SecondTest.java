@@ -1,10 +1,10 @@
-package test;
+package test.alltests.firsttests;
 
-import TestAnno.After;
-import TestAnno.Before;
-import TestAnno.MyJUNIT;
+import test.anno.After;
+import test.anno.Before;
+import test.anno.MyJUNIT;
 
-import static TestAnno.TestProcessing.*;
+import static test.tools.Assertion.*;
 
 public class SecondTest {
     StringBuilder stringBuilder;

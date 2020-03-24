@@ -1,4 +1,4 @@
-package TestAnno;
+package test.anno;
 
 
 import java.lang.annotation.ElementType;

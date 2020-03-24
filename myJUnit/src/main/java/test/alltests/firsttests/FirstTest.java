@@ -1,11 +1,11 @@
-package test;
+package test.alltests.firsttests;
 
-import TestAnno.*;
+import test.anno.MyJUNIT;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static TestAnno.TestProcessing.*;
+import static test.tools.Assertion.*;
 
 public class FirstTest {
 

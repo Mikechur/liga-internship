@@ -1,11 +1,11 @@
-package test.keks.shmeks;
+package test.alltests.lasttests;
 
 
 
 
-import TestAnno.MyJUNIT;
+import test.anno.MyJUNIT;
 
-import static TestAnno.TestProcessing.*;
+import static test.tools.Assertion.*;
 
 public class FifthTest {
 
