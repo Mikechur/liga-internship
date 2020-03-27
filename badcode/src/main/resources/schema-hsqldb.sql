@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS person;
+CREATE TABLE person
+(
+  id INT NOT NULL,
+  sex VARCHAR(6) NOT NULL,
+  name VARCHAR(150) NOT NULL,
+  weight INT NOT NULL,
+  height INT NOT NULL,
+  age INT NOT NULL,
+  PRIMARY KEY (id));
